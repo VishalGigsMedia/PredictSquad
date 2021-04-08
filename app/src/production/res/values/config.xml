@@ -4,10 +4,9 @@
     <string name="env">0</string>
 
     <!-- Api URL -->
-    <string name="server_url">http://192.168.1.13/web-crawler/public/api/v1/</string>
-    <string name="terms_condition_url">https://instantkred.in/public/api/v1/terms</string>
-    <string name="privacy_policy_url">https://instantkred.in/public/api/v1/privacy</string>
-    <string name="download_credit_report">https://instantkred.in/public/api/v1/download_credit_report</string>
-    <string name="credit_report_pdf_name">Equifax-credit-report.pdf</string>
+    <string name="server_url">http://65.1.198.18/api/v1/</string>
+    <string name="terms_condition_url">http://65.1.198.18/api/v1/terms</string>
+    <string name="privacy_policy_url">http://65.1.198.18/api/v1/privacy</string>
+    <string name="about_us_url">http://65.1.198.18/api/v1/about-us</string>
 
 </resources>

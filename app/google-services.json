@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "854351443583",
-    "project_id": "prediction-hub-c6059",
-    "storage_bucket": "prediction-hub-c6059.appspot.com"
+    "project_number": "862836529270",
+    "project_id": "predict-squad",
+    "storage_bucket": "predict-squad.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:854351443583:android:a2971377a8ffd24b10b14a",
+        "mobilesdk_app_id": "1:862836529270:android:5bcd3976d0f2f66a406757",
         "android_client_info": {
-          "package_name": "com.prediction_hub"
+          "package_name": "com.predict_squad"
         }
       },
       "oauth_client": [
         {
-          "client_id": "854351443583-t02klegans3app75vde2jure3g1qgh6b.apps.googleusercontent.com",
+          "client_id": "862836529270-74t5ln6djips6eqg1akuei9rt05rbkru.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCDrqGh3giXorS4BlkOLmkKAPptmxx0MM4"
+          "current_key": "AIzaSyB00rRTfmXzFylVGFQYSsX5ZxBcqYfm52Y"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "854351443583-t02klegans3app75vde2jure3g1qgh6b.apps.googleusercontent.com",
+              "client_id": "862836529270-74t5ln6djips6eqg1akuei9rt05rbkru.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

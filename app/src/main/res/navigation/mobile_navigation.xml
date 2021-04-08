@@ -7,25 +7,25 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.prediction_hub.ui.home.HomeFragment"
+        android:name="com.predict_squad.ui.home.HomeFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/nav_about_us"
-        android:name="com.prediction_hub.ui.about_us.AboutUsFragment"
+        android:name="com.predict_squad.ui.about_us.AboutUsFragment"
         android:label="@string/menu_about_us"
         tools:layout="@layout/fragment_about_us" />
 
     <fragment
         android:id="@+id/nav_privacy_policy"
-        android:name="com.prediction_hub.ui.privacy_policy.PrivacyPolicyFragment"
+        android:name="com.predict_squad.ui.privacy_policy.PrivacyPolicyFragment"
         android:label="@string/menu_privacy_policy"
         tools:layout="@layout/fragment_privacy_policy" />
 
     <fragment
         android:id="@+id/nav_terms_condition"
-        android:name="com.prediction_hub.ui.terms_condition.TermsConditionFragment"
+        android:name="com.predict_squad.ui.terms_condition.TermsConditionFragment"
         android:label="@string/menu_terms_condition"
         tools:layout="@layout/fragment_terms_condition" />
 

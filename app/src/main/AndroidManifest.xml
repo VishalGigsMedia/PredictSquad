@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.project.prediction_hub">
+    package="com.predict_squad">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -9,7 +9,7 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
     <application
-        android:name="com.prediction_hub.common_helper.Application"
+        android:name="com.predict_squad.common_helper.Application"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -20,7 +20,7 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="n">
 
-        <activity android:name="com.prediction_hub.SplashActivity">
+        <activity android:name="com.predict_squad.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,12 +29,12 @@
         </activity>
 
         <activity
-            android:name="com.prediction_hub.MainActivity"
+            android:name="com.predict_squad.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.PredictionApplication.NoActionBar" />
 
         <service
-            android:name="com.prediction_hub.firebase.MyFirebaseMessagingService"
+            android:name="com.predict_squad.firebase.MyFirebaseMessagingService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />

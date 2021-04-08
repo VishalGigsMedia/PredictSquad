@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.prediction_hub.ui.home.HomeFragment"
+    tools:context="com.predict_squad.ui.home.HomeFragment"
     tools:viewBindingIgnore="false">
 
     <com.google.android.material.tabs.TabLayout
