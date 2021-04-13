@@ -7,6 +7,6 @@ data class UpdateApplicationModel(
     val status: Int
 ) {
     data class Data(
-        val update_type: Int
+        val update_type: String
     )
 }

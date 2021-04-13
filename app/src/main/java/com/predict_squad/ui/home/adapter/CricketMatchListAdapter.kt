@@ -9,13 +9,13 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.predict_squad.R
 import com.predict_squad.common_helper.ConstantHelper
 import com.predict_squad.common_helper.CustomRunnable
 import com.predict_squad.common_helper.DefaultHelper.decrypt
+import com.predict_squad.databinding.RowItemMatchListBinding
 import com.predict_squad.ui.home.CricketMatchListFragment
 import com.predict_squad.ui.home.model.MatchListModel
-import com.predict_squad.R
-import com.predict_squad.databinding.RowItemMatchListBinding
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -75,14 +75,6 @@ class CricketMatchListAdapter(
                     holder.itemOffersBinding.tvSecondTeamName.text = decrypt(list[position].team2.short_name)
                 }
 
-                if (decrypt(list[position].team1.logo).isNotEmpty()) {
-                    Glide.with(context).load(decrypt(list[position].team1.logo)).centerCrop().into(holder.itemOffersBinding.ivFirstTeam)
-                }
-
-                if (decrypt(list[position].team2.logo).isNotEmpty()) {
-                    Glide.with(context).load(decrypt(list[position].team2.logo)).centerCrop().into(holder.itemOffersBinding.ivSecondTeam)
-                }
-
                 if (decrypt(list[position].match_date).isNotEmpty()) {
                     val receivedTime = decrypt(list[position].match_date) //"25-03-2021 14:05:00"
                     val reformattedStr: String = formatter.format(serverSideFormat.parse(receivedTime))
@@ -107,7 +99,7 @@ class CricketMatchListAdapter(
                     {
                         if (receivedMillis > curMillis) {
                             customRunnable = CustomRunnable(
-                                handler, holder.itemOffersBinding.tvVs, reformattedStr,context
+                                handler, holder.itemOffersBinding.tvVs, reformattedStr, context
                             )
                             handler.removeCallbacks(customRunnable!!)
                             customRunnable!!.holder = holder.itemOffersBinding.tvVs
@@ -138,6 +130,14 @@ class CricketMatchListAdapter(
                     } else {
                         matchListClickListener.onShowErrorDialog()
                     }
+                }
+
+                if (decrypt(list[position].team1.logo).isNotEmpty()) {
+                    Glide.with(context).load(decrypt(list[position].team1.logo)).centerCrop().into(holder.itemOffersBinding.ivFirstTeam)
+                }
+
+                if (decrypt(list[position].team2.logo).isNotEmpty()) {
+                    Glide.with(context).load(decrypt(list[position].team2.logo)).centerCrop().into(holder.itemOffersBinding.ivSecondTeam)
                 }
             } catch (e: Exception) {
                 e.printStackTrace()

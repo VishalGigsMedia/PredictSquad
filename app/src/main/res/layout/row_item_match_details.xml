@@ -13,7 +13,7 @@
         android:layout_marginEnd="@dimen/_5sdp"
         android:gravity="start"
         android:textAllCaps="false"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@color/black"
         android:textSize="@dimen/_14ssp"
         android:textStyle="bold"
         android:visibility="gone"
@@ -21,10 +21,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="@string/match_details">
-
-    </TextView>
-
+        tools:text="@string/match_details"/>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cvMatchDetails"
@@ -46,6 +43,18 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/_5sdp">
 
+            <androidx.appcompat.widget.AppCompatRatingBar
+                android:id="@+id/ratingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:numStars="5"
+                android:rating="0"
+                android:visibility="gone"
+                style="?android:attr/ratingBarStyleSmall"
+                android:theme="@style/customRatingBar"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
             <TextView
                 android:id="@+id/tvFirstTeamName"
                 android:layout_width="match_parent"
@@ -58,10 +67,8 @@
                 android:visibility="gone"
                 app:layout_constraintHorizontal_weight="1"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="Mumbai">
-
-            </TextView>
+                app:layout_constraintTop_toBottomOf="@+id/ratingBar"
+                tools:text="Mumbai" />
 
             <TextView
                 android:id="@+id/tvFirstTeamDescription"
@@ -76,9 +83,7 @@
                 app:layout_constraintHorizontal_weight="1"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvFirstTeamName"
-                tools:text="Mumbai Indians ki team">
-
-            </TextView>
+                tools:text="Mumbai Indians" />
 
             <TextView
                 android:id="@+id/tvSecondTeamName"
@@ -93,9 +98,7 @@
                 app:layout_constraintHorizontal_weight="1"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvFirstTeamDescription"
-                tools:text="Mumbai">
-
-            </TextView>
+                tools:text="Mumbai" />
 
             <TextView
                 android:id="@+id/tvSecondTeamDescription"
@@ -110,10 +113,7 @@
                 app:layout_constraintHorizontal_weight="1"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvSecondTeamName"
-                tools:text="Mumbai Indians ki team">
-
-            </TextView>
-
+                tools:text="Mumbai Indians ki team" />
 
             <TextView
                 android:id="@+id/tvDescription"
@@ -128,9 +128,16 @@
                 app:layout_constraintHorizontal_weight="1"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvSecondTeamDescription"
-                tools:text="The id you use in add() or replace() should be the id of the container in activity_main.xml you want to place the fragment into. The fragment's xml layout hasn't been loaded yet, and is only accessed by the Fragment, so you won't be able to reference any views with id's in the fragment itself from the activity.">
+                tools:text="The id you use in add() or replace() should be the id of the container in activity_main.xml you want to place the fragment into. The fragment's xml layout hasn't been loaded yet, and is only accessed by the Fragment, so you won't be able to reference any views with id's in the fragment itself from the activity." />
 
-            </TextView>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvLinks"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvDescription" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

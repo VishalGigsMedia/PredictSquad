@@ -10,16 +10,16 @@ import com.predict_squad.common_helper.DefaultHelper.getDeviceId
 import com.predict_squad.common_helper.DefaultHelper.isOnline
 import com.predict_squad.common_helper.InputParams
 import com.predict_squad.retrofit.APIService
-import com.predict_squad.ui.home.model.MatchDetailsModel
 import com.predict_squad.ui.home.model.MatchListModel
 import com.predict_squad.R
+import com.predict_squad.ui.home.model.MatchDetailModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class MatchListRepository {
     var matchListModel: MatchListModel? = null
-    var matchDetailsModel: MatchDetailsModel? = null
+    var matchDetailsModel: MatchDetailModel? = null
 
     fun getCricketMatchList(
         context: Context, apiService: APIService, offset: Int, nextLimit: Int, fcmToken: String
@@ -127,15 +127,15 @@ class MatchListRepository {
 
     fun getMatchDetails(
         context: Context, apiService: APIService, matchId: String, matchType: String
-    ): MutableLiveData<MatchDetailsModel> {
-        val mutableLiveData: MutableLiveData<MatchDetailsModel> = MutableLiveData()
+    ): MutableLiveData<MatchDetailModel> {
+        val mutableLiveData: MutableLiveData<MatchDetailModel> = MutableLiveData()
         if (isOnline()) {
             val inputParams = InputParams()
             inputParams.match_id = matchId//encrypt(matchId)
             inputParams.match_type = encrypt(matchType)
-            apiService.getMatchDetails(inputParams).enqueue(object : Callback<MatchDetailsModel> {
+            apiService.getMatchDetails(inputParams).enqueue(object : Callback<MatchDetailModel> {
                 override fun onResponse(
-                    call: Call<MatchDetailsModel>, response: Response<MatchDetailsModel>
+                    call: Call<MatchDetailModel>, response: Response<MatchDetailModel>
                 ) {
                     try {
 
@@ -143,7 +143,7 @@ class MatchListRepository {
                             matchDetailsModel = response.body()
                             mutableLiveData.value = matchDetailsModel
                         } else {
-                            matchDetailsModel = MatchDetailsModel(
+                            matchDetailsModel = MatchDetailModel(
                                 null, 0, response.body()?.message.toString(), failed
                             )
                             mutableLiveData.value = matchDetailsModel
@@ -154,13 +154,13 @@ class MatchListRepository {
                     }
                 }
 
-                override fun onFailure(call: Call<MatchDetailsModel>, t: Throwable) {
-                    matchDetailsModel = MatchDetailsModel(null, 0, "API failed", apiFailed)
+                override fun onFailure(call: Call<MatchDetailModel>, t: Throwable) {
+                    matchDetailsModel = MatchDetailModel(null, 0, "API failed", apiFailed)
                     mutableLiveData.value = matchDetailsModel
                 }
             })
         } else {
-            matchDetailsModel = MatchDetailsModel(null, 0, context.getString(R.string.no_internet), noInternet)
+            matchDetailsModel = MatchDetailModel(null, 0, context.getString(R.string.no_internet), noInternet)
             mutableLiveData.value = matchDetailsModel
         }
         return mutableLiveData

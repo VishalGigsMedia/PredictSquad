@@ -18,9 +18,9 @@ import com.predict_squad.common_helper.DefaultHelper.showToast
 import com.predict_squad.common_helper.OnCurrentFragmentVisibleListener
 import com.predict_squad.retrofit.APIService
 import com.predict_squad.ui.home.adapter.MatchDetailsAdapter
-import com.predict_squad.ui.home.model.MatchDetailsModel
 import com.predict_squad.ui.home.view_model.MatchListViewModel
 import com.predict_squad.databinding.FragmentMatchDetailsBinding
+import com.predict_squad.ui.home.model.MatchDetailModel
 import javax.inject.Inject
 
 class MatchDetailFragment : Fragment() {
@@ -30,7 +30,7 @@ class MatchDetailFragment : Fragment() {
     private var callback: OnCurrentFragmentVisibleListener? = null
 
     private lateinit var layoutManager: LinearLayoutManager
-    private var list: ArrayList<MatchDetailsModel.Data.Prediction> = ArrayList()
+    private var list: ArrayList<MatchDetailModel.Data.Prediction> = ArrayList()
     private var adapter: MatchDetailsAdapter? = null
 
     private lateinit var viewModel: MatchListViewModel
@@ -95,21 +95,21 @@ class MatchDetailFragment : Fragment() {
                         setMatchDetails(matchDetailsModel.data?.match_details)
                         if (matchDetailsModel.data?.prediction?.isNotEmpty() == true) {
                             mBinding?.rvMatchDetails?.visibility = View.VISIBLE
-                            this.list = matchDetailsModel.data.prediction as ArrayList<MatchDetailsModel.Data.Prediction>
+                            this.list = matchDetailsModel.data.prediction as ArrayList<MatchDetailModel.Data.Prediction>
                             adapter?.addData(list)
                         }
                     }
                     ConstantHelper.failed -> {
-                        setNoDataLayout(decrypt(matchDetailsModel.message))
+                        setNoDataLayout(decrypt(matchDetailsModel.message.toString()))
                     }
                     ConstantHelper.authorizationFailed -> {
-                        setNoDataLayout(decrypt(matchDetailsModel.message))
+                        setNoDataLayout(decrypt(matchDetailsModel.message.toString()))
                     }
                     ConstantHelper.apiFailed -> {
-                        showToast(context, decrypt(matchDetailsModel.message))
+                        showToast(context, decrypt(matchDetailsModel.message.toString()))
                     }
                     ConstantHelper.noInternet -> {
-                        setNoDataLayout(decrypt(matchDetailsModel.message))
+                        setNoDataLayout(decrypt(matchDetailsModel.message.toString()))
                     }
                 }
             }
@@ -123,22 +123,23 @@ class MatchDetailFragment : Fragment() {
         }
     }
 
-    private fun setMatchDetails(matchDetails: MatchDetailsModel.Data.MatchDetails?) {
+   // private fun setMatchDetails(matchDetails: MatchDetailsModel1.Data.MatchDetails?) {
+    private fun setMatchDetails(matchDetails: MatchDetailModel.Data.MatchDetails?) {
         if (matchDetails != null) {
             mBinding?.clMatchDetail?.visibility = View.VISIBLE
             mBinding?.cvMatchDetails?.visibility = View.VISIBLE
             mBinding?.tvTitle?.visibility = View.VISIBLE
-            if (decrypt(matchDetails.title).isNotEmpty()) {
-                mBinding?.tvTitle?.text = decrypt(matchDetails.title)
+            if (decrypt(matchDetails.title.toString()).isNotEmpty()) {
+                mBinding?.tvTitle?.text = decrypt(matchDetails.title.toString())
             }
-            if (decrypt(matchDetails.match).isNotEmpty()) {
-                mBinding?.tvMatchValue?.text = decrypt(matchDetails.match)
+            if (decrypt(matchDetails.match.toString()).isNotEmpty()) {
+                mBinding?.tvMatchValue?.text = decrypt(matchDetails.match.toString())
             }
-            if (decrypt(matchDetails.tournament).isNotEmpty()) {
-                mBinding?.tvTournamentValue?.text = decrypt(matchDetails.tournament)
+            if (decrypt(matchDetails.tournament.toString()).isNotEmpty()) {
+                mBinding?.tvTournamentValue?.text = decrypt(matchDetails.tournament.toString())
             }
-            if (decrypt(matchDetails.match_date).isNotEmpty()) {
-                val value = decrypt(matchDetails.match_date).split(" ")
+            if (decrypt(matchDetails.match_date.toString()).isNotEmpty()) {
+                val value = decrypt(matchDetails.match_date.toString()).split(" ")
                 val date = value[0]
                 val time = value[1]
                 mBinding?.tvDateValue?.text = date

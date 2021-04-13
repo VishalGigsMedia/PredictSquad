@@ -269,11 +269,12 @@ class MainActivity : AppCompatActivity(), OnCurrentFragmentVisibleListener {
     }
 
     private fun checkAppVersion() {
-        viewModel.checkVersion(this, apiService, getVersionCode()).observe(this, { updateApplicationModel ->
+                viewModel.checkVersion(this, apiService, getVersionCode()).observe(this, { updateApplicationModel ->
             if (updateApplicationModel != null) {
                 when (updateApplicationModel.status) {
                     ConstantHelper.success -> {
                         val checkVersion = decrypt(updateApplicationModel.data?.update_type.toString())
+                        //println("checkVersion : $checkVersion")
                         //val checkVersion = "1"
                         if (checkVersion == "1") {
                             updateApplicationDialog(false)
