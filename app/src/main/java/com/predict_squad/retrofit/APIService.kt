@@ -3,7 +3,7 @@ package com.predict_squad.retrofit
 
 import com.predict_squad.UpdateApplicationModel
 import com.predict_squad.common_helper.InputParams
-import com.predict_squad.ui.home.model.MatchDetailModel
+import com.predict_squad.ui.home.model.MatchDetailsModel
 import com.predict_squad.ui.home.model.MatchListModel
 import retrofit2.Call
 import retrofit2.http.Body
@@ -23,7 +23,7 @@ interface APIService {
 
    // @POST("get_match_details")
     @POST("get_cricket_match_details")
-    fun getMatchDetails(@Body inputParams: InputParams): Call<MatchDetailModel>
+    fun getMatchDetails(@Body inputParams: InputParams): Call<MatchDetailsModel>
 
     @POST("check_version")
     fun checkVersion(@Body inputParams: InputParams): Call<UpdateApplicationModel>

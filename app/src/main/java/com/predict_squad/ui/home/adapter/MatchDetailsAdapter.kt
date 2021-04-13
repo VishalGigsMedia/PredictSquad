@@ -10,11 +10,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.predict_squad.R
 import com.predict_squad.common_helper.DefaultHelper.decrypt
 import com.predict_squad.databinding.RowItemMatchDetailsBinding
-import com.predict_squad.ui.home.model.MatchDetailModel
+import com.predict_squad.ui.home.model.MatchDetailsModel
 import java.util.*
 
 class MatchDetailsAdapter(
-    private val context: Context, private val list: ArrayList<MatchDetailModel.Data.Prediction>?
+    private val context: Context, private val list: ArrayList<MatchDetailsModel.Data.Prediction>?
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     lateinit var mcontext: Context
     private var layoutManager = LinearLayoutManager(context)
@@ -125,7 +125,7 @@ class MatchDetailsAdapter(
         return false
     }
 
-    fun addData(list: List<MatchDetailModel.Data.Prediction>?) {
+    fun addData(list: List<MatchDetailsModel.Data.Prediction>?) {
         if (list != null) {
             this.list?.addAll(list)
         }

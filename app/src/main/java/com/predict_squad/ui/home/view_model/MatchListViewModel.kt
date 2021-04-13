@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.predict_squad.retrofit.APIService
-import com.predict_squad.ui.home.model.MatchDetailModel
+import com.predict_squad.ui.home.model.MatchDetailsModel
 import com.predict_squad.ui.home.model.MatchListModel
 import com.predict_squad.ui.home.repository.MatchListRepository
 
@@ -12,7 +12,7 @@ class MatchListViewModel : ViewModel() {
 
     private val matchListRepository: MatchListRepository = MatchListRepository()
     private var matchListModel: LiveData<MatchListModel>? = null
-    private var matchDetailsModel: LiveData<MatchDetailModel>? = null
+    private var matchDetailsModel: LiveData<MatchDetailsModel>? = null
 
 
     fun getCricketMatchList(
@@ -44,7 +44,7 @@ class MatchListViewModel : ViewModel() {
 
     fun getMatchDetails(
         context: Context, apiService: APIService, matchId: String, matchType: String
-    ): LiveData<MatchDetailModel>? {
+    ): LiveData<MatchDetailsModel>? {
         matchDetailsModel = matchListRepository.getMatchDetails(context, apiService, matchId, matchType)
         return matchDetailsModel
     }

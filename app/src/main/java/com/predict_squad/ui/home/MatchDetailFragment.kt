@@ -20,7 +20,7 @@ import com.predict_squad.retrofit.APIService
 import com.predict_squad.ui.home.adapter.MatchDetailsAdapter
 import com.predict_squad.ui.home.view_model.MatchListViewModel
 import com.predict_squad.databinding.FragmentMatchDetailsBinding
-import com.predict_squad.ui.home.model.MatchDetailModel
+import com.predict_squad.ui.home.model.MatchDetailsModel
 import javax.inject.Inject
 
 class MatchDetailFragment : Fragment() {
@@ -30,7 +30,7 @@ class MatchDetailFragment : Fragment() {
     private var callback: OnCurrentFragmentVisibleListener? = null
 
     private lateinit var layoutManager: LinearLayoutManager
-    private var list: ArrayList<MatchDetailModel.Data.Prediction> = ArrayList()
+    private var list: ArrayList<MatchDetailsModel.Data.Prediction> = ArrayList()
     private var adapter: MatchDetailsAdapter? = null
 
     private lateinit var viewModel: MatchListViewModel
@@ -95,7 +95,7 @@ class MatchDetailFragment : Fragment() {
                         setMatchDetails(matchDetailsModel.data?.match_details)
                         if (matchDetailsModel.data?.prediction?.isNotEmpty() == true) {
                             mBinding?.rvMatchDetails?.visibility = View.VISIBLE
-                            this.list = matchDetailsModel.data.prediction as ArrayList<MatchDetailModel.Data.Prediction>
+                            this.list = matchDetailsModel.data.prediction as ArrayList<MatchDetailsModel.Data.Prediction>
                             adapter?.addData(list)
                         }
                     }
@@ -124,7 +124,7 @@ class MatchDetailFragment : Fragment() {
     }
 
    // private fun setMatchDetails(matchDetails: MatchDetailsModel1.Data.MatchDetails?) {
-    private fun setMatchDetails(matchDetails: MatchDetailModel.Data.MatchDetails?) {
+    private fun setMatchDetails(matchDetails: MatchDetailsModel.Data.MatchDetails?) {
         if (matchDetails != null) {
             mBinding?.clMatchDetail?.visibility = View.VISIBLE
             mBinding?.cvMatchDetails?.visibility = View.VISIBLE

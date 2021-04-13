@@ -1,6 +1,6 @@
 package com.predict_squad.ui.home.model
 
-data class MatchDetailModel(
+data class MatchDetailsModel(
     val `data`: Data? = null,
     val force_logout: Int? = null,
     val message: Any? = null,

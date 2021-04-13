@@ -11,10 +11,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.predict_squad.R
 import com.predict_squad.common_helper.DefaultHelper.decrypt
 import com.predict_squad.databinding.RowItemDynamicLinkBinding
-import com.predict_squad.ui.home.model.MatchDetailModel
+import com.predict_squad.ui.home.model.MatchDetailsModel
 
 
-class DynamicLinksAdapter(private val context: Context, private val list: List<MatchDetailModel.Data.Prediction.FantasyGameLink?>?) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class DynamicLinksAdapter(private val context: Context, private val list: List<MatchDetailsModel.Data.Prediction.FantasyGameLink?>?) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
