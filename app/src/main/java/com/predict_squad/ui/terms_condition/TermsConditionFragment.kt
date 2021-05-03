@@ -7,10 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.predict_squad.MainActivity
+import com.predict_squad.R
 import com.predict_squad.common_helper.AppWebViewClients
 import com.predict_squad.common_helper.DefaultHelper.isOnline
 import com.predict_squad.common_helper.OnCurrentFragmentVisibleListener
-import com.predict_squad.R
 import com.predict_squad.databinding.FragmentTermsConditionBinding
 
 class TermsConditionFragment : Fragment() {
@@ -27,7 +27,7 @@ class TermsConditionFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        callback?.onSetToolbarTitle(true, TermsConditionFragment::class.java.simpleName)
+        callback?.onSetToolbarTitle(true, TermsConditionFragment::class.java.simpleName, "")
 
 
     }

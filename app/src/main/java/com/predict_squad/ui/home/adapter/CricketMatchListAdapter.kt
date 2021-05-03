@@ -126,7 +126,8 @@ class CricketMatchListAdapter(
 
                 holder.itemOffersBinding.cvParent.setOnClickListener {
                     if (decrypt(list[position].match_details_available) == "1") {
-                        matchListClickListener.onMatchClick(list[position].id, ConstantHelper.cricket)
+                        val toolbarTitle = decrypt(list[position].team1.short_name) + " vs " + decrypt(list[position].team2.short_name)
+                        matchListClickListener.onMatchClick(list[position].id, ConstantHelper.cricket, toolbarTitle)
                     } else {
                         matchListClickListener.onShowErrorDialog()
                     }
@@ -153,7 +154,7 @@ class CricketMatchListAdapter(
 
 
     interface MatchListClickListener {
-        fun onMatchClick(id: String, matchType: String)
+        fun onMatchClick(id: String, matchType: String, toolbarTitle: String)
         fun onShowErrorDialog()
     }
 

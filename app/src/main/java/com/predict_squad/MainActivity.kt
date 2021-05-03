@@ -25,14 +25,14 @@ import com.predict_squad.common_helper.DefaultHelper.hideKeyboard
 import com.predict_squad.common_helper.DefaultHelper.openFragment
 import com.predict_squad.common_helper.DefaultHelper.showToast
 import com.predict_squad.common_helper.OnCurrentFragmentVisibleListener
+import com.predict_squad.databinding.ActivityMainBinding
 import com.predict_squad.retrofit.APIService
 import com.predict_squad.ui.about_us.AboutUsFragment
 import com.predict_squad.ui.home.HomeFragment
 import com.predict_squad.ui.home.MatchDetailFragment
+import com.predict_squad.ui.home.MatchDetailsParent
 import com.predict_squad.ui.privacy_policy.PrivacyPolicyFragment
 import com.predict_squad.ui.terms_condition.TermsConditionFragment
-import com.predict_squad.R
-import com.predict_squad.databinding.ActivityMainBinding
 import java.util.*
 import javax.inject.Inject
 import kotlin.concurrent.schedule
@@ -122,7 +122,7 @@ class MainActivity : AppCompatActivity(), OnCurrentFragmentVisibleListener {
     private fun showMatchDetails(matchId: String, matchType: String) {
         //println("matchId : $matchId  matchType : $matchType")
         openFragment(this, HomeFragment(), false)
-        val matchDetailFragment = MatchDetailFragment()
+        val matchDetailFragment = MatchDetailFragment(matchId, matchType)
         val bundle = Bundle()
         bundle.putString(BundleKey.MatchId.toString(), matchId)
         bundle.putString(BundleKey.MatchType.toString(), matchType)
@@ -189,10 +189,13 @@ class MainActivity : AppCompatActivity(), OnCurrentFragmentVisibleListener {
 
     }
 
-    override fun onSetToolbarTitle(show: Boolean, currentFragmentName: String) {
+    override fun onSetToolbarTitle(show: Boolean, currentFragmentName: String, toolbarTitle: String) {
         when (currentFragmentName) {
             HomeFragment::class.java.simpleName -> {
                 setToolbarName(getString(R.string.menu_home))
+            }
+            MatchDetailsParent::class.java.simpleName -> {
+                setToolbarName(toolbarTitle)
             }
             MatchDetailFragment::class.java.simpleName -> {
                 setToolbarName(getString(R.string.match_details))
@@ -269,7 +272,7 @@ class MainActivity : AppCompatActivity(), OnCurrentFragmentVisibleListener {
     }
 
     private fun checkAppVersion() {
-                viewModel.checkVersion(this, apiService, getVersionCode()).observe(this, { updateApplicationModel ->
+        viewModel.checkVersion(this, apiService, getVersionCode()).observe(this, { updateApplicationModel ->
             if (updateApplicationModel != null) {
                 when (updateApplicationModel.status) {
                     ConstantHelper.success -> {

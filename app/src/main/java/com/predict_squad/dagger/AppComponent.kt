@@ -7,6 +7,7 @@ import com.predict_squad.ui.home.CricketMatchListFragment
 import com.predict_squad.ui.home.FootballMatchListFragment
 import com.predict_squad.ui.home.HomeFragment
 import com.predict_squad.ui.home.MatchDetailFragment
+import com.predict_squad.ui.home.TeamDetailFragment
 import dagger.Component
 import javax.inject.Singleton
 
@@ -25,6 +26,8 @@ interface AppComponent {
     fun inject(basketballMatchListFragment: BasketballMatchListFragment)
 
     fun inject(matchDetailFragment: MatchDetailFragment)
+
+    fun inject(teamDetailFragment: TeamDetailFragment)
 
     fun inject(mainActivity: MainActivity)
 

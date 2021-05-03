@@ -13,6 +13,7 @@ import com.predict_squad.retrofit.APIService
 import com.predict_squad.ui.home.model.MatchListModel
 import com.predict_squad.R
 import com.predict_squad.ui.home.model.MatchDetailsModel
+import com.squad_gyan.ui.home.model.TeamDetailsModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -20,6 +21,7 @@ import retrofit2.Response
 class MatchListRepository {
     var matchListModel: MatchListModel? = null
     var matchDetailsModel: MatchDetailsModel? = null
+    var teamDetailsModel: TeamDetailsModel? = null
 
     fun getCricketMatchList(
         context: Context, apiService: APIService, offset: Int, nextLimit: Int, fcmToken: String
@@ -165,6 +167,49 @@ class MatchListRepository {
         }
         return mutableLiveData
     }
+
+
+    fun getTeamDetails(
+        context: Context, apiService: APIService, matchId: String, matchType: String
+    ): MutableLiveData<TeamDetailsModel> {
+        val mutableLiveData: MutableLiveData<TeamDetailsModel> = MutableLiveData()
+        if (isOnline()) {
+            val inputParams = InputParams()
+            inputParams.match_id = matchId//encrypt(matchId)
+            inputParams.match_type = encrypt(matchType)
+            apiService.getTeamDetails(inputParams).enqueue(object : Callback<TeamDetailsModel> {
+                override fun onResponse(
+                    call: Call<TeamDetailsModel>, response: Response<TeamDetailsModel>
+                ) {
+                    try {
+
+                        if (response.body()?.data != null) {
+                            teamDetailsModel = response.body()
+                            mutableLiveData.value = teamDetailsModel
+                        } else {
+                            teamDetailsModel = TeamDetailsModel(
+                                null, 0, response.body()?.message.toString(), failed
+                            )
+                            mutableLiveData.value = teamDetailsModel
+                        }
+
+                    } catch (e: Exception) {
+                        e.printStackTrace()
+                    }
+                }
+
+                override fun onFailure(call: Call<TeamDetailsModel>, t: Throwable) {
+                    teamDetailsModel = TeamDetailsModel(null, 0, "API failed", apiFailed)
+                    mutableLiveData.value = teamDetailsModel
+                }
+            })
+        } else {
+            teamDetailsModel = TeamDetailsModel(null, 0, context.getString(R.string.no_internet), noInternet)
+            mutableLiveData.value = teamDetailsModel
+        }
+        return mutableLiveData
+    }
+
 
 
 }

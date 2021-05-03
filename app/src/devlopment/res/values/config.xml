@@ -2,9 +2,14 @@
 <resources>
 
     <!-- Api URL -->
-    <string name="server_url">http://65.0.151.206/prediction_hub/public/api/v1/</string>
+    <!--<string name="server_url">http://65.0.151.206/prediction_hub/public/api/v1/</string>
     <string name="terms_condition_url">http://65.0.151.206/prediction_hub/public/api/v1/terms</string>
     <string name="privacy_policy_url">http://65.0.151.206/prediction_hub/public/api/v1/privacy</string>
-    <string name="about_us_url">http://65.0.151.206/prediction_hub/public/api/v1/about-us</string>
+    <string name="about_us_url">http://65.0.151.206/prediction_hub/public/api/v1/about-us</string>-->
+
+    <string name="server_url">http://13.235.145.230/api/v1/</string>
+    <string name="terms_condition_url">http://13.235.145.230/api/v1/terms</string>
+    <string name="privacy_policy_url">http://13.235.145.230/api/v1/privacy</string>
+    <string name="about_us_url">http://13.235.145.230/api/v1/about-us</string>
 
 </resources>

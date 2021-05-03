@@ -117,12 +117,12 @@ class FootballMatchListFragment : Fragment(), FootballMatchListAdapter.MatchList
 
 
     override fun onMatchClick(id: String, matchType: String) {
-        val matchDetailFragment = MatchDetailFragment()
+        /*val matchDetailFragment = MatchDetailFragment()
         val bundle = Bundle()
         bundle.putString(BundleKey.MatchId.toString(), id)
         bundle.putString(BundleKey.MatchType.toString(), matchType)
         matchDetailFragment.arguments = bundle
-        DefaultHelper.openFragment(context as FragmentActivity, matchDetailFragment, true)
+        DefaultHelper.openFragment(context as FragmentActivity, matchDetailFragment, true)*/
     }
 
     override fun onShowErrorDialog() {

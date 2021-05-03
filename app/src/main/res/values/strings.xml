@@ -51,4 +51,24 @@
 
     <string name="match_ongoing">Ongoing</string>
 
+    <string name="prediction_first">Prediction #1</string>
+
+    <string name="prediction_second">Prediction #2</string>
+
+    <string name="wicket_keeper">Wicket-Keepers</string>
+
+    <string name="batsmen">Batsmen</string>
+
+    <string name="all_round">All-Rounders</string>
+
+    <string name="bowler">Bowlers</string>
+
+    <string name="not_able_to_find_application">Not able to find application</string>
+
+    <string name="captain">C</string>
+
+    <string name="vice_captain">VC</string>
+
+    <string name="team_details">Team Details</string>
+
 </resources>

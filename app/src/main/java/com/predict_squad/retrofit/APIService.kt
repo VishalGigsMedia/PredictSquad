@@ -5,6 +5,7 @@ import com.predict_squad.UpdateApplicationModel
 import com.predict_squad.common_helper.InputParams
 import com.predict_squad.ui.home.model.MatchDetailsModel
 import com.predict_squad.ui.home.model.MatchListModel
+import com.squad_gyan.ui.home.model.TeamDetailsModel
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.POST
@@ -27,5 +28,8 @@ interface APIService {
 
     @POST("check_version")
     fun checkVersion(@Body inputParams: InputParams): Call<UpdateApplicationModel>
+
+    @POST("get_cricket_fantasy_teams")
+    fun getTeamDetails(@Body inputParams: InputParams): Call<TeamDetailsModel>
 
 }
